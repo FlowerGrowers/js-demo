@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数式编程 暴露到全局
+        // let name = 'jiaunda';
+        // let grade = [{ subject: 'js', grade: 99 }, { subject: 'css', grade: 66 }, { subject: 'html', grade: 44 }];
+
+        // function aver(grade, name) {
+        //     let total = grade.reduce((pre, cur) => {
+        //         return pre + cur.grade;
+        //     }, 0)
+        //     return (total / grade.length)
+        // }
+        // console.log(aver(grade, name));
+        // 对象的结构
+        let user = {
+            name: 'jiaunda',
+            grade: [{
+                subject: 'js',
+                grade: 99
+            }, {
+                subject: 'css',
+                grade: 66
+            }, {
+                subject: 'html',
+                grade: 44
+            }],
+            aver() {
+                let total = this.grade.reduce((pre, cur) => pre + cur.grade, 0);
+                return total / this.grade.length
+            }
+        }
+        console.log(user.aver());
+    </script>
+
+</body>
+
+</html>

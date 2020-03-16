@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: beige;
+            font-size: 5em;
+            font-weight: 600;
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    jiajunda
+    <script>
+        function Color(ele) {
+            this.ele = ele;
+            this.color = ['#1abc9c', '#f1c40f', '#9b59b6', '#f39c12'];
+            this.textColor = ['#fff', '#000', '#ccc', '#888'];
+            this.run = function () {
+                setInterval(() => {
+                    // console.log(this);
+                    let i = Math.floor(Math.random() * this.color.length);
+                    let j = Math.floor(Math.random() * this.textColor.length);
+                    // console.log(i);
+                    this.ele.style.backgroundColor = this.color[i];
+                    this.ele.style.color = this.textColor[j];
+                    // ele.style.backgroundColor = ''
+                }, 1500);
+            }
+        };
+        let obj = new Color(document.querySelector('body'));
+        obj.run()
+    </script>
+</body>
+
+</html>

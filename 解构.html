@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构</title>
+</head>
+
+<body>
+    <script>
+        // "use strict"
+        // let num = {
+        //     name: 'jiajunda',
+        //     age: 18,
+        //     grade: 100
+        // }
+        // let {
+        //     name,
+        //     ...args
+        // } = num;
+        // console.log(name, args);
+
+        // {
+        //     name: name
+        // } // 左边源数据，右边要赋给的值
+
+        // [, b] // 数组比较特殊
+
+        let lessons = {
+                name: 'jiajunda',
+                lesssons: {
+                    title: 'js',
+                    age: {
+                        pop: 'yuwen'
+                    }
+                }
+            }
+            /* let {
+                lesssons
+            } = name
+            let {
+                title
+            } = lesssons */
+            // --------------多层对象的解构
+        let {
+            name,
+            lesssons: {
+                title,
+                age: {
+                    pop
+                }
+            }
+        } = lessons
+        console.log(pop);
+
+        //---------------结构小实例
+        function createEle(ele = {}) {
+            let {
+                width = 500, height = 600, backgroundColor = 'red' // 应用结构和默认赋值的形式
+            } = ele;
+            const div = document.createElement('div');
+            div.style.width = width + 'px';
+            div.style.height = height + 'px';
+            div.style.backgroundColor = backgroundColor;
+            document.body.appendChild(div);
+        };
+        createEle()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a</title>
+</head>
+
+<body>
+    <!-- Download a picture -->
+    <!-- <a href="/images/2017四人照.jpg" download="true">
+        <img src="/images/2017四人照.jpg">
+    </a> -->
+    <!-- send a message -->
+    <a href="sms:17367077920">短信给自己</a>
+    <!-- call a phone -->
+    <a href="tel:+17367077920">17367077920</a>
+    <!-- send a email -->
+    <a href="mailto:1007274033@qq.com">my Email</a>
+    <div id="div" style="margin-top: 100px;">123</div>
+    <!-- <script src="./getElementDistance.js"></script> -->
+    <script>
+        function getElementDistance(ele) {
+            let offsetTop = ele.offsetTop
+            let scrollTop = document.documentElement.scrollTop
+            return offsetTop - scrollTop
+        }
+        console.log(getElementDistance(document.querySelector('#div')))
+
+    </script>
+</body>
+
+</html>

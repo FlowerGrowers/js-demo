@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>jiajunda</button>
+    <script>
+        // function User(name) {
+        //     this.name = name;
+        // };
+        // let lisi = new User('lisi');
+        // console.log(lisi);
+        // 工厂创建式的
+
+        let hdms = { url: 'www.baidu.com' };
+        User.call(hdms, 'jiajunda');
+        console.log(hdms);
+
+        // call 和 apply *****会立即执行*****
+        let lisi = {
+            name: 'lisi'
+        };
+        let wangwu = {
+            name: 'wangwu'
+        }
+        function User() {
+            console.log(this.name);
+        };
+        User.call(lisi)
+        User.call(wangwu)
+
+        let math = Math.max(123, 12, 35);
+        console.log(math);
+
+
+        // 数组也想要使用 最大值的方法 就得
+        let arr = [1, 10, 56]
+        console.log(
+            Math.max.call(Math, ...arr)
+        );
+
+        // 使用apply 或者 call 拉实现 属性的继承
+
+        // bind的使用方法
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', function (e) {
+            // console.log(12);
+            // console.log(e.target);
+
+            console.log(e.target.innerHTML + this.age);
+
+        }.bind({ age: 22 }))
+    </script>
+</body>
+
+</html>

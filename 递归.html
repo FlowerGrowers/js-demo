@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 5的阶乘
+        // 5*4*3*2*1
+        function factorial(num) {
+            if (num === 1) { return 1 } // 什么时候出去 不能一直
+            return num * factorial(num - 1);
+        };
+        console.log(factorial(10));
+
+        // 1 1 2 3 5 8 13 
+        function feibou(num) {
+            if (num === 1 || num === 2) return 1;
+            return feibou(num - 1) + feibou(num - 2)
+        };
+        console.log(feibou(6));
+
+        // 递归方式的求和
+        function sum(...args) {
+            if (args.length === 0) return 0;
+            return args.pop() + sum(...args);
+        };
+        console.log(sum(1, 2, 35, 7, 8, 9));
+
+        // 对实现倒三角 
+        // **********
+        // ********
+        // ******
+        // *****
+        // ****
+        // ***
+        // **
+        // *
+        function san(num) {
+            if (num === 0) return '';
+            document.write('*'.repeat(num) + '<br/>');
+            san(--num);
+        };
+        function star(num) {
+            num ? document.write('*'.repeat(num) + '<br/>') || san(--num) : '';
+
+        }
+        san(2)
+        san(10)
+        star(5)
+        // 递归的最终试炼 
+        let lessons = [{ title: 'zhangsan', click: 100 }, { title: 'lisi', click: 88 }, { title: 'wangwu', click: 33 }];
+
+        function changClick(lessons, num = 100, i = 0) {
+            if (i === lessons.length) { return lessons };
+            lessons[i].click += num;
+            return changClick(lessons, num, ++i)
+        };
+        console.table(lessons)
+    </script>
+</body>
+
+</html>

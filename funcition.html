@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sum(...params) {
+            return params.reduce((pre, sum) => {
+                return pre += sum;
+            }, 0)
+        };
+        function sum(...params) {
+            return params.reduce((pre, sum) => {
+                return pre + sum;
+            })
+        };
+        console.log(sum(1, 2, 3, 4, 5, 6, 7, 8));
+
+        let hd = () => {
+            return 1 + 2;
+        };
+
+        let bd = [1, 2, 3, 4, 5, 6].filter(res => {
+            return res >= 3;
+        });
+
+        let bd = [1, 2, 3, 4, 5, 6].filter(res => res >= 5);
+        console.log(bd);
+
+        // 求和
+        let sum = [22, 55, 66, 88].reduce((pre, cur) => pre + cur);
+
+        console.log(sum);
+        // 递归函数 事件 箭头函数不方便
+    </script>
+</body>
+
+</html>

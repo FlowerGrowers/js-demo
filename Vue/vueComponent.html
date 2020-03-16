@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <style>
+        .foo {
+            font-size: 5em;
+        }
+        
+        .bar {
+            color: blueviolet;
+        }
+        
+        .bg {
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <h1 v-if='awesome'>Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+        {{msg}}
+        <!-- <my-component class="bg"></my-component> -->
+        <p v-if="type === 'A'">A</p>
+        <p v-else-if="type === 'B'">B</p>
+        <p v-else-if="type === 'C'">C</p>
+
+        <template v-if="loginType ===  'username'">
+            <label>Username</label>
+            <input type="text" placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input type="text" placeholder="Enter your email" key="email-input">
+        </template>
+        <button @click="changType">改变</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            template: `<p class='foo bar'>Hi</p>`
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello world!!',
+                awesome: true,
+                type: 'B',
+                loginType: 'username'
+            },
+            methods: {
+                changType() {
+                    this.loginType = this.loginType === 'username' ? ' ' : 'username'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

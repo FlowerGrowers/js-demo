@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button>jiajunda</button>
+    <button>kong</button>
+    <!-- 环境和作用域
+    我们生活在城市和乡村
+    其中就有汽车厂学校啊公园 无人依赖就会被废弃回收 每个环境都有自己的作用范围 作用的范围
+    前提就是有人需要 -->
+    <script>
+        // 对于函数来说 每调用一次就会开辟一个新的地址 
+        console.log('*****非常非常重要****');
+
+        for (var i = 0; i < 5; i++) {
+            (function (i) {
+                setTimeout(() => {
+                    console.log(i);
+                })
+            })(i)
+        };
+        function bettwen(array, from, to) {
+
+            return array.filter((v) => {
+                return v > from && v < to;
+
+            })
+        }
+
+        console.table(bettwen([1, 23, 5, 4, 8, 61, 111, 15], 2, 20));
+
+        let btns = document.querySelectorAll('button');
+        console.log(btns);
+        btns.forEach((item) => {
+            // let left = 1; // 2.在改进可能会出现环境的污染
+            let bind = false;
+            item.addEventListener('click', () => {
+                // let left = 1; //出现抖动
+                // console.log(left);
+                if (!bind) {
+                    let left = 1;
+                    bind = setInterval(() => {
+                        // console.log(left);
+                        console.log(item);
+                        item.style.left = `${left++}px`
+
+                        // item.style.left = left++ + 'px';
+                    }, 5);
+                }
+
+
+            })
+        });
+
+        let cars = [{ name: 'zhangsan', age: 18, gongzi: 5000 }, { name: 'lisi', age: 42, gongzi: 3000 }, { name: 'wangwu', age: 30, gongzi: 10000 }, { name: 'liuliu', age: 41, gongzi: 1200 }];
+
+        function sortSelect(arr, field, type = 'asc') {
+            return arr.sort((a, b) => {
+                if (type === 'asc') {
+                    return a[field] - b[field];
+                } else {
+                    return b[field] - a[field];
+                }
+            })
+        }
+        console.table(sortSelect(cars, 'age'));
+
+    </script>
+
+</body>
+
+</html>

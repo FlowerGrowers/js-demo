@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let user = {
+            name: 'jiajudan',
+            age: 18
+        }
+
+        console.log(user['age']);
+        // console.log(user[age]);
+
+        // 对象属性的删除 delete 
+
+        let myName = {
+            name: 'jiajunda',
+            age: 18
+        }
+        let yourName = {
+            ...myName,
+            lang: 'en'
+        }
+        console.log(yourName);
+        myName.lang = 'chinese';
+        console.log(myName);
+        console.log(yourName);
+    </script>
+</body>
+
+</html>

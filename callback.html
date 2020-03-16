@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 回调函数可以这样理解 在一个函数中使用另一个函数
+        // document.body.addEventListener('click', function () {
+        //     console.log(123);
+        // })
+
+        // 展开语法 
+
+        function sum(...args) {
+            return args.reduce((a, b) => a + b)
+        };
+        console.log(sum(1, 2, 34, 5));
+
+        // 递归试炼在挑战 给每个点击增值
+        let lessons = [{ title: 'zhangsan', click: 100 }, { title: 'lisi', click: 88 }, { title: 'wangwu', click: 33 }];
+
+        function changeClick(lessons, num = 100, i = 0) {
+            if (i === lessons.length) return lessons;
+            lessons[i].click += num;
+            return changeClick(lessons, num, ++i)
+        };
+        // changeClick(lessons);
+        console.table(changeClick(lessons))
+    </script>
+</body>
+
+</html>

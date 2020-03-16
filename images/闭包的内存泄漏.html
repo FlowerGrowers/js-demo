@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div data-desc="chinese">贾钧达</div>
+    <div data-desc="english">jiajunda</div>
+    <script>
+        let divs = document.querySelectorAll('div');
+        console.log(divs);
+        divs.forEach((item => {
+            let desc = item.getAttribute('data-desc')
+            item.addEventListener('click', function () {
+                console.log(desc);
+                // console.log(item);
+                console.log(item);
+            })
+            item = null;
+        }))
+    </script>
+</body>
+
+</html>
