@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <counter @ojbk="numberChange" ref="one"></counter>
+        <counter @ojbk="numberChange" ref="two"></counter>
+        <div @click="add">{{total}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const counter = {
+            data() {
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                changeClick() {
+                    this.number++;
+                    this.$emit('ojbk');
+                }
+            },
+            template: `<div @click="changeClick">{{number}}</div>`
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                total: 0
+            },
+            components: {
+                counter
+            },
+            methods: {
+                numberChange() {
+                    // console.log(this.$ref.num01);
+                    // alert(11)
+                    // console.log(12);
+
+                    this.total = this.$refs.one.number + this.$refs.two.number;
+
+                },
+                add() {
+                    console.log(1);
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

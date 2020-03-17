@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let lesson = {
+            name: 'zhansan',
+            age: 18
+        }
+        let hd = {
+            ...lesson
+        };
+        let bd = Object.assign(lesson, {});
+        let newLesson = {};
+        for (const key in lesson) {
+            if (lesson.hasOwnProperty(key)) {
+                // const element = lesson[key];
+                // console.log(element);
+                newLesson[key] = lesson[key];
+            }
+        }
+        console.log(newLesson);
+        console.log(hd);
+        console.log(bd);
+    </script>
+</body>
+
+</html>

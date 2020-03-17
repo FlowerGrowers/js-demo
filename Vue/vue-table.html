@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bug</title>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+                <tr is="row" ref="hello"></tr>
+                <!-- h5中规定tbody中只能是tr 所以只能是tr 用Vue的is属性 -->
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+            </tbody>
+
+        </table>
+        <div ref="jia">123</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const row = {
+            template: `<tr>
+                    <td>{{msg}}</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>`,
+            data() { // 是一个方法
+                return {
+                    msg: '12'
+                }
+            }
+        };
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                row
+            }
+        })
+    </script>
+</body>
+
+</html>

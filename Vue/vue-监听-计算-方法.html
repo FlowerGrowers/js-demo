@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}} {{fullName}} {{age}}
+        <!-- 模板是我了显示，不要存在逻辑 -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                firstName: 'junda',
+                lastName: 'jia',
+                age: 18
+            },
+            methods: {
+
+            },
+            beforeCreate() {
+                console.log('beforeCreate');
+            },
+            created() {
+                console.log('created');
+
+            },
+            beforeMount() {
+                console.log('beforeMount');
+
+            },
+            mounted() {
+                console.log('mounted');
+
+            },
+            // 计算属性
+            computed: {
+                // fullName() {
+                //     // 内置缓存的 只有当data中相关的值改变是，才会变化
+                //     return this.firstName + this.lastName;
+                //     // 计算属性的set/get
+                // }
+                fullName: {
+                    get() {
+                        return this.firstName + ' ' + this.lastName;
+                    },
+                    set(str) {
+                        let arr = str.split(' ');
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

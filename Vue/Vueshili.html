@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="msg">
+            <button @click="add">Add</button>
+        </div>
+        <ul>
+            <todo-list v-for="(item,index) in list" :content="item" :index="index" @delete="deleteItem"></todo-list>
+            <!-- <li v-for="item in list">
+                {{item}}
+            </li> -->
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const TodoList = {
+            props: ['content', 'index'],
+            template: `<li @click="deleteItemClick">
+                    {{content}}
+                </li>`,
+            methods: {
+                deleteItemClick() {
+                    this.$emit('delete', this.index);
+                }
+            }
+        };
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                list: []
+            },
+            methods: {
+                add() {
+                    if (!this.msg) {
+                        alert('Please enter something');
+                        return
+                    }
+                    this.list.push(this.msg);
+                    this.msg = '';
+                },
+                deleteItem(index) {
+                    this.list.splice(index, 1)
+                }
+            },
+            components: {
+                TodoList
+            },
+        })
+    </script>
+</body>
+
+</html>

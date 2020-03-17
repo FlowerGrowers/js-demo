@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期函数</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}<button @click="deletediv">无</button>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        // 在某个时间点会自动执行
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            },
+            beforeCreate() {
+                console.log(`beforeCreate`);
+            },
+            created() {
+
+                console.log(`created`);
+            },
+            beforeMount() {
+                console.log(this.$el);
+
+                console.log(`beforeMount`); // hello 还没被渲染
+            },
+            mounted() {
+                console.log(this.$el);
+
+                console.log(`mounted`); // hello被显示到页面中
+            },
+            beforeDestroy() {
+                console.log(`beforeDestory`);
+
+            },
+            destroyed() {
+                console.log(`destoryed`);
+            },
+            beforeUpdate() {
+                console.log(this.$el);
+
+                console.log(`beforeUpdate`); // 还未被更新时
+            },
+            updated() {
+                console.log(this.$el);
+
+                console.log(`updated`); // 重新渲染页面时
+            },
+            methods: {
+                deletediv() {
+                    this.msg = ''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
