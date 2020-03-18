@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slot</title>
+</head>
+
+<body>
+    <div id="app">
+        <child>
+            <template v-slot:header>
+                <p>123</p>
+            </template>
+            <template v-slot:footer>
+                <p>fine</p>
+            </template>
+        </child>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `<div>
+                <slot name="header"></slot>
+                <h1>what</h1>
+                <slot name="footer"></slot>
+            </div>`
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            }
+        })
+    </script>
+</body>
+
+</html>

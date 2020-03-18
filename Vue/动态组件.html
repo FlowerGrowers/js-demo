@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件</title>
+</head>
+
+<body>
+    <div id="app">
+        <component :is='type'></component>
+        <button @click='handleClick'>change</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const childOne = {
+            template: `<h1 v-once>one</h1>` // v-once 第一次创建组件是 静态内容 不会被销毁 会放到内存中
+        }
+        const childTwo = {
+            template: `<h1 v-once>two</h1>`
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                type: 'childOne'
+            },
+            methods: {
+                handleClick() {
+                    if (this.type === 'childOne') {
+                        this.type = 'childTwo';
+                    } else {
+                        this.type = 'childOne';
+                    }
+                }
+            },
+            components: {
+                childOne,
+                childTwo
+            }
+        })
+    </script>
+</body>
+
+</html>

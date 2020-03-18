@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 父组件 通过属性向子组件传递  -->
+        <!-- 子组件不要去改变父组件的值 -->
+        <!-- 单项数据流  因为你子组件如果改变某个值 加入其他组件也要使用 就不好了-->
+        <counter @ojbk="numberChange" ref="one"></counter>
+        <!-- :...表示 ...字符串-->
+        <counter @ojbk="numberChange" ref="two"></counter>
+        <div @click="add">{{total}}</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const counter = {
+            data() {
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                changeClick() {
+                    this.number++;
+                    this.$emit('ojbk');
+                }
+            },
+            template: `<div @click="changeClick">{{number}}</div>`
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                total: 0
+            },
+            components: {
+                counter
+            },
+            methods: {
+                numberChange() {
+                    // console.log(this.$ref.num01);
+                    // alert(11)
+                    // console.log(12);
+
+                    this.total = this.$refs.one.number + this.$refs.two.number;
+
+                },
+                add() {
+                    console.log(1);
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

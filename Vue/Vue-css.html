@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <style>
+        /* 隐藏 -》 显示 */
+        
+        .fade-enter {
+            opacity: 0;
+            /* 第一帧存在 第二帧销毁  ∴透明度0->1 */
+        }
+        
+        .fade-enter-active {
+            /* 不写name时 v-enter-active */
+            transition: all 1s;
+            /* 动画还未开始 第一帧就存在了 最后动作完成销毁 */
+        }
+        /* 显示-》隐藏 */
+        
+        .fade-leave-to {
+            opacity: 0;
+        }
+        
+        .fade-leave-active {
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="fade">
+            <p v-if="isShow">look me</p>
+        </transition>
+        <button @click="handleClick">看得见/🙈</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                isShow: false
+            },
+            methods: {
+                handleClick() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let hd = {
+            render() {
+                console.log(12);
+            }
+        };
+        hd.render();
+        hd.__proto__.show = function() { // 对于作为对象本身使用找的长辈 .__proto__
+            console.log(15);
+        }
+        hd.show();
+        console.log(' === === === === === === === === ===  === === == ');
+
+        function User() {
+
+        }; // 对于一个函数来麻烦一点 xxx.prototype是作为构造函数实例化对象之后的父亲
+        // 如果对于它本身而言 为对象本身添加属性和方法时 可以个 .__proto__ 添加 
+        let jiajudna = new User();
+
+        User.__proto__.show = function() {
+            console.log(15555);
+        }
+        User.prototype.show = function() {
+            console.log(2333);
+            /* 并且知道实例化后的对象的__proto__（长辈）就是 User.prototype*/
+        }
+        jiajudna.show();
+        User.show();
+
+        let arr = [];
+        // let arr = new Array(); 这才是实质上
+        console.log(arr.__proto__ == Array.prototype);
+        arr.__proto__.show = function() {
+            console.log('zheyanghaoma !');
+        };
+        Array.prototype.show = function() {
+            console.log('caiciashinage');
+        }
+        arr.show();
+    </script>
+</body>
+
+</html>

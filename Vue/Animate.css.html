@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        p {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- type="transition" -->
+        <!-- 自定义时间 :duration="10000" 10s 10000ms ="{enter:1000,leave:5000}" 定义入场和出场动画-->
+        <transition name="fade" appear enter-active-class="animated lightSpeedIn fade-enter-active" leave-active-class="animated lightSpeedOut fade-leave-active" appear-active-class="animated lightSpeedIn">
+            <p v-if="isShow">look me</p>
+        </transition>
+        <button @click="handleClick">看得见/🙈</button>
+    </div>
+    <script src="vue.js"></script>
+    <script src="velocity.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                isShow: true
+            },
+            methods: {
+                handleClick() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

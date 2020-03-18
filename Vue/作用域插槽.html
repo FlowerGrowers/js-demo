@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域slot</title>
+</head>
+
+<body>
+    <div id="app">
+        <child v-slot:default="{users,lessons}">
+            <h1>{{users.firstName}}</h1>
+            <h1>{{lessons.css}}</h1>
+        </child>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `<div>
+                <slot :users='users' :lessons="lessons"></slot>
+            </div>`,
+            data() {
+                return {
+                    users: {
+                        firstName: 'junda',
+                        lastName: 'jia'
+                    },
+                    lessons: {
+                        js: 88,
+                        css: 66,
+                        hmtl: 66
+                    }
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

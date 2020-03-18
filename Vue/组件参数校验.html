@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 给组件添加原生的事件就用修饰符.native -->
+        <counter content="hello world" @click.native='add'></counter>
+        <!-- 在自定义组件间上绑定的是自定义事件,要触发自定义事件就必须在子组件中this.$emit() -->
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const counter = {
+            props: {
+                content: {
+                    type: String,
+                    required: false,
+                    default: '12',
+                    validator(value) {
+                        return (value.length > 5)
+                    }
+                }
+            },
+            template: `<div>{{content}}</div>`
+        };
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                counter
+            },
+            methods: {
+                add() {
+                    console.log(12);
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

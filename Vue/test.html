@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child content="heool" @ojbk="clickO">jiajunda</child>
+        <child content="joo" @ojbk="clickO"></child>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.prototype.bus = new Vue();
+        const child = {
+            template: `<div @click="handleClick">{{selfContent}}<slot></slot></div>`,
+            data() {
+                return {
+                    selfContent: this.content
+                }
+            },
+            props: ['content'],
+            methods: {
+                handleClick() {
+                    // console.log(this);
+
+                    this.$emit('ojbk', this.selfContent);
+                    this.bus.$emit('kkkk', this.selfContent)
+                }
+            },
+            mounted() {
+                // console.log(this.bus);
+                this.bus.$on('kkkk', (msg) => {
+                    // console.log(this);
+                    this.selfContent = msg
+
+                })
+            }
+        };
+        const vm = new Vue({
+            el: '#app',
+            methods: {
+                clickO(msg) {
+                    console.log(msg);
+
+                }
+            },
+            components: {
+                child
+            }
+        })
+    </script>
+</body>
+
+</html>

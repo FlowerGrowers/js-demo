@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let hd = [1, 2, 3, 522, 56, 12];
+        console.log(Math.max.apply(null, hd));
+        let bd = {
+            data: [1, 2, 3, 5, 6]
+        }
+
+        let lesson = {
+            xj: {
+                js: 87,
+                css: 88,
+                html: 89
+            }
+        }
+        console.log(Math.max.apply(null, bd.data));
+
+        console.log(Math.max.apply(null, Object.values(lesson.xj)));
+    </script>
+</body>
+
+</html>

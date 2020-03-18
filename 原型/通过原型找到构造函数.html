@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = {
+            name: 'jiajudna'
+        }
+        let b = {
+            web: 'houdunren'
+        }
+        Object.prototype.web = 'jiajudna.com';
+        console.log('web' in a); // 不仅会判断a中是否有着个属性，还会去找他的原型链中是否存在
+        /* 如果只想判断自己是否存在这个属性 */
+        console.log(a.hasOwnProperty('web'));
+        console.log(a.hasOwnProperty('web'));
+        for (const key in a) {
+
+            console.log(key);
+        }
+    </script>
+</body>
+
+</html>
